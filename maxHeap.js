@@ -1,8 +1,12 @@
-// Max Heap with array value -> [heapValue, realValue] 
+// Max Heap 
 
 class MaxHeap {
   constructor() {
     this.heap = []
+  }
+  
+  set(h) {
+    this.heap = h
   }
 
   insert(value) {
@@ -18,7 +22,7 @@ class MaxHeap {
         parentIndex = Math.floor((index - 1) / 2),
         parent = this.heap[parentIndex];
 
-      if (parent[0] >= element[0]) break
+      if (parent >= element) break
       this.heap[index] = parent;
       this.heap[parentIndex] = element;
       index = parentIndex
@@ -29,7 +33,7 @@ class MaxHeap {
     const max = this.heap[0];
     this.heap[0] = this.heap.pop()
     this.sinkDown(0)
-    return max[1]
+    return max
   }
 
   sinkDown(index) {
@@ -38,10 +42,10 @@ class MaxHeap {
       largest = index;
     const length = this.heap.length
 
-    if (left <= length && this.heap[left] && this.heap[left][0] > this.heap[largest][0]) {
+    if (left <= length && this.heap[left] !== undefined && this.heap[left] > this.heap[largest]) {
       largest = left
     }
-    if (right <= length && this.heap[right] && this.heap[right][0] > this.heap[largest][0]) {
+    if (right <= length && this.heap[right] !== undefined && this.heap[right] > this.heap[largest]) {
       largest = right
     }
 
