@@ -1,4 +1,4 @@
-var Trie = function(words) {
+let Trie = function(words) {
   this.root = {};
   
   for(let p = 0; p < words.length; p++) {
