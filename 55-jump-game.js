@@ -1,4 +1,5 @@
 var canJump = function (nums) {
+  // Bottom up DP
   let dp = new Array(nums.length).fill(false)
   dp[nums.length - 1] = true
 
